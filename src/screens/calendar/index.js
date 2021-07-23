@@ -27,12 +27,15 @@ class CalendarPage extends React.Component {
   componentDidMount = () => {
 
     console.log(" ALUNO TURMA: " + this.props.students.student.TURMA)
+    console.log(" MATRICULA: "+ this.props.students.student.RA)
+
     api
       .post('/calendario/lstCalendario/', {
-        p_cd_turma: this.props.students.student.TURMA, 
+        p_turma: this.props.students.student.TURMA,
+        p_cd_usuario: this.props.students.student.RA
       }, )
       .then((res) => {
-        console.log(res.data);
+        //console.log(" ----AVALIACOES:  "+res.data);
 
         if (res.data.length > 0) {
 
@@ -40,7 +43,7 @@ class CalendarPage extends React.Component {
 
           for (var index in res.data) {
 
-            console.log("DATA: "+JSON.stringify(res.data[index]));
+            //console.log(" -----DATE: "+JSON.stringify(res.data[index]));
 
             var d = res.data[index].DATA.split('/')
             var dateFormated = '20' + d[2] + '-' + d[1] + '-' + d[0]
@@ -50,7 +53,7 @@ class CalendarPage extends React.Component {
           }
 
         }
-
+    
         this.setState({
           allEvents: res.data,
           eventsDates: dates,
@@ -66,7 +69,8 @@ class CalendarPage extends React.Component {
   componentDidUpdate = () => {
     api
       .post('/calendario/lstCalendario/', {
-        p_cd_turma: this.props.students.student.TURMA,
+        p_turma: this.props.students.student.TURMA,
+        p_cd_usuario: this.props.students.student.RA
       })
       .then((res) => {
         console.log(res.data);

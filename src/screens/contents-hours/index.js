@@ -93,7 +93,7 @@ class ContentsHours extends React.Component {
                 fontWeight: 'bold',
                 fontSize: 16,
               }}>
-              Conteúdos e Horários
+              CONTEÚDOS E HORÁRIOS
             </Text>
           </View>
 

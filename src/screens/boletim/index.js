@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text, TouchableOpacity, Image, FlatList, ActivityIndicator } from 'react-native';
+import { View, ScrollView, Text, Button, TouchableOpacity, Image, FlatList, ActivityIndicator, Linking } from 'react-native';
 
 import Header from '../../components/ui/header';
 import HeaderAuthenticated from '../../components/ui/header-authenticated';
@@ -100,7 +100,7 @@ class BoletimFrequence extends React.Component {
             <HeaderSelectUser />
           </View>
 
-          <View style={{ paddingHorizontal: 40 }}>
+          <View style={{ paddingHorizontal: 20 }}>
 
             <View
               style={{
@@ -110,7 +110,7 @@ class BoletimFrequence extends React.Component {
                 marginTop: 15,
                 borderWidth: 1,
                 borderColor: '#BBBCBF',
-                borderRadius: 20,
+                borderRadius: 25,
                 paddingHorizontal: 15,
                 paddingVertical: 10,
                 alignItems: 'center',
@@ -142,20 +142,32 @@ class BoletimFrequence extends React.Component {
 
             {this.state.loading && <ActivityIndicator size="large" color="#4674B7" />}
 
-            <View>
-              <Text> N1 - Primeira avaliação </Text>
-              <Text> N2 - Segunda avaliação </Text>
-              <Text> MAIC - Média das avaliações </Text>
-              <Text> MB - Média do Bimestre </Text>
-              <Text> F - Faltas </Text>
+            <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between'}}>
+              <View style={{fontSize:14, paddingTop:15, paddingBottom:15}}>
+                <Text> N1 - Primeira avaliação </Text>
+                <Text> N2 - Segunda avaliação </Text>
+                <Text> MAIC - Média das avaliações </Text>
+                <Text> MB - Média do Bimestre </Text>
+                <Text> F - Faltas </Text>
+              </View>
+
+              <View style={{alignItems:'center', justifyContent:'center' ,borderRadius:20, borderColor:"#cc0000", borderWidth:1, fontSize:12, paddingTop:15, paddingBottom:15}}>
+               
+                <TouchableOpacity style={{alignItems:'center', justifyContent:'center', padding:10 }} onPress={() => {Linking.openURL('https://seculomanaus.com.br/'+this.props.students.student.RA);}}>
+                    <Icon name="file-pdf-o" color="#cc0000" size={45} />
+                    <Text style={{fontSize:14, color:'#cc0000', paddingTop:10, paddingBottom:10}}>
+                      Baixe o Boletim
+                    </Text>
+                </TouchableOpacity>
+              </View>
             </View>
 
             <View style={{
               width: '80%',
               flexDirection: 'row',
               justifyContent: 'space-between', 
-              marginBottom: 15,
-              marginTop: 10,
+              marginBottom: 20,
+              marginTop: 20,
             }}>
 
               <Text
@@ -166,7 +178,7 @@ class BoletimFrequence extends React.Component {
                   width: '40%'
                 }}>
                 DISCIPLINA
-                    </Text>
+              </Text>
               <Text style={{ fontSize: 12, color: '#1A2541' }}>N1</Text>
               <Text style={{ fontSize: 12, color: '#1A2541' }}>MAIC</Text>
               <Text style={{ fontSize: 12, color: '#1A2541' }}>N2</Text>

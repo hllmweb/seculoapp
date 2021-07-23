@@ -18,6 +18,7 @@ class CalendarComponent extends React.Component {
         {
           (rows = this.props.matrix.map((row, rowIndex) => {
             var rowItems = row.map((item, colIndex) => {
+              
               return (
                 <TouchableOpacity
                   key={item + 1}

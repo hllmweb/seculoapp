@@ -109,6 +109,7 @@ class HeaderSelectUser extends React.Component {
             alignItems: 'center',
             justifyContent: 'space-between',
             paddingHorizontal: 10,
+            paddingRight:20,
             borderRadius: 40,
             borderWidth: 1,
             borderColor: '#c3c3c3',
@@ -119,14 +120,15 @@ class HeaderSelectUser extends React.Component {
             style={{width: 30, height: 30}}
             source={require('../../../assets/images/user-select.png')}
           />
-          <Text style={{fontSize: 13}}>{this.state.student}</Text>
-          <Icon name="arrow-down" />
+          <Text style={{fontSize: 12}}>{this.state.student}</Text>
+          
+          <Icon name="angle-down" size={25} />
         </TouchableOpacity>
       </View>
     );
   }
 }
-
+//<Icon name="arrow-down" />
 const mapStateToProps = (state) => ({
   auth: state.auth,
   students: state.students,

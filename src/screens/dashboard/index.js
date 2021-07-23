@@ -72,7 +72,7 @@ class Dashboard extends Component {
       },
       {
         id: '01',
-        name: 'Conteúdos e Horários',
+        name: 'CONTEÚDOS E HORÁRIOS',
         image: require('../../assets/images/contents.png'),
         navigation: 'ContentsHours',
         done: false,
@@ -164,7 +164,7 @@ class Dashboard extends Component {
       return data;
     };
 
-    const columns = 2;
+    const columns = 3;
 
     if(this.props.students.student.CODCURSO != "001"){
       data[2] = {
@@ -191,10 +191,10 @@ class Dashboard extends Component {
         <View style={{backgroundColor: '#F1F1F2'}}>
           <Header navigation={this.props.navigation} />
           <HeaderAuthenticated />
-          <View style={{paddingHorizontal: 20, marginTop: 20}}>
+          <View style={{paddingHorizontal: 10, marginTop: 20}}>
             <HeaderSelectUser />
           </View>
-          <View style={{paddingHorizontal: 20, paddingTop: 20}}>
+          <View style={{paddingHorizontal: 10, paddingTop: 20}}>
             <FlatList
               data={createRows(data, columns)}
               keyExtractor={(item) => item.id}
@@ -224,7 +224,7 @@ class Dashboard extends Component {
                         }}>
                         <Image
                           resizeMode="stretch"
-                          style={{width: 33, height: 35}}
+                          style={{width: 25, height: 25}}
                           source={item.image}
                         />
                       </View>
@@ -289,20 +289,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     flexBasis: 0,
     minHeight: 100,
-    paddingVertical: 10,
+    padding:10,
+    //paddingVertical: 10,
     backgroundColor: '#fff',
     flexShrink: 1,
   },
   text: {
     color: '#4674b7',
     textAlign: 'center',
-    paddingHorizontal: 5,
+    fontWeight: 'bold',
+    fontSize: 12,
+    padding:2,
+    //paddingHorizontal: 5,
     flexShrink: 1,
   },
   itemEmpty: {
     backgroundColor: 'transparent',
     flexShrink: 1,
     borderWidth: 0,
+    marginBottom:10
   },
 });
 

@@ -38,7 +38,7 @@ class Calendara extends React.Component {
   componentDidMount = () => {
     api
       .post('/calendario/lstCalendario/', {
-        p_cd_turma: this.props.students.student.TURMA,
+        p_cd_turma: this.props.students.student.TURMA
       })
       .then((res) => {
         console.log(res.data);
