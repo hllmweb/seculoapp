@@ -60,7 +60,7 @@ class HeaderSelectUser extends React.Component {
           hasBackdrop={true}
           onBackdropPress={this.toggleModal}>
           <View
-            style={{backgroundColor: '#fff', padding: 20, borderRadius: 10}}>
+            style={{backgroundColor: '#FFFFFF', padding: 20, borderRadius: 10}}>
             <View>
               <Text
                 style={{
@@ -83,7 +83,7 @@ class HeaderSelectUser extends React.Component {
                   <Text
                     style={{
                       textAlign: 'center',
-                      color: '#fff',
+                      color: '#FFFFFF',
                       fontWeight: 'bold',
                     }}>
                     {student.NM_ALUNO}
@@ -113,6 +113,7 @@ class HeaderSelectUser extends React.Component {
             borderRadius: 40,
             borderWidth: 1,
             borderColor: '#c3c3c3',
+            backgroundColor: '#FFFFFF',
             paddingVertical: 10,
           }}>
           <Image
@@ -120,7 +121,7 @@ class HeaderSelectUser extends React.Component {
             style={{width: 30, height: 30}}
             source={require('../../../assets/images/user-select.png')}
           />
-          <Text style={{fontSize: 12}}>{this.state.student}</Text>
+          <Text style={{fontSize: 12, fontWeight:'bold'}}>{this.state.student}</Text>
           
           <Icon name="angle-down" size={25} />
         </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text, Button, TouchableOpacity, Image, FlatList, ActivityIndicator, Linking } from 'react-native';
+import { View, ScrollView, Text, Button, TouchableOpacity, Image, FlatList, ActivityIndicator, Linking, StyleSheet } from 'react-native';
 
 import Header from '../../components/ui/header';
 import HeaderAuthenticated from '../../components/ui/header-authenticated';
@@ -143,19 +143,19 @@ class BoletimFrequence extends React.Component {
             {this.state.loading && <ActivityIndicator size="large" color="#4674B7" />}
 
             <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between'}}>
-              <View style={{fontSize:14, paddingTop:15, paddingBottom:15}}>
-                <Text> N1 - Primeira avaliação </Text>
-                <Text> N2 - Segunda avaliação </Text>
-                <Text> MAIC - Média das avaliações </Text>
-                <Text> MB - Média do Bimestre </Text>
-                <Text> F - Faltas </Text>
+              <View style={{fontSize:14, marginTop:15, marginBottom:15}}>
+                <Text style={styles.text}> N1 - Primeira avaliação </Text>
+                <Text style={styles.text}> N2 - Segunda avaliação </Text>
+                <Text style={styles.text}> MAIC - Média das avaliações </Text>
+                <Text style={styles.text}> MB - Média do Bimestre </Text>
+                <Text style={styles.text}> F - Faltas </Text>
               </View>
 
-              <View style={{alignItems:'center', justifyContent:'center' ,borderRadius:20, borderColor:"#cc0000", borderWidth:1, fontSize:12, paddingTop:15, paddingBottom:15}}>
+              <View style={{alignItems:'center', justifyContent:'center' ,borderRadius:20, borderColor:"#cc0000", borderWidth:1, fontSize:12, marginTop:15, marginBottom:15}}>
                
-                <TouchableOpacity style={{alignItems:'center', justifyContent:'center', padding:10 }} onPress={() => {Linking.openURL('https://seculomanaus.com.br/'+this.props.students.student.RA);}}>
-                    <Icon name="file-pdf-o" color="#cc0000" size={45} />
-                    <Text style={{fontSize:14, color:'#cc0000', paddingTop:10, paddingBottom:10}}>
+                <TouchableOpacity style={{alignItems:'center', justifyContent:'center', paddingLeft:10, paddingRight:10, paddingTop:2,paddingBottom:2 }} onPress={() => {Linking.openURL('https://seculomanaus.com.br/componentes/portal/demonstrativo/inicio?ra='+this.props.students.student.RA);}}>
+                    <Icon name="download" color="#cc0000" size={30} />
+                    <Text style={{fontSize:14, textAlign:'center', width:80, fontWeight: 'bold' ,color:'#cc0000', paddingTop:5, paddingBottom:10}}>
                       Baixe o Boletim
                     </Text>
                 </TouchableOpacity>
@@ -163,11 +163,14 @@ class BoletimFrequence extends React.Component {
             </View>
 
             <View style={{
-              width: '80%',
+              width: '100%',
               flexDirection: 'row',
               justifyContent: 'space-between', 
-              marginBottom: 20,
-              marginTop: 20,
+              marginBottom: 30,
+              marginTop: 30,
+              padding:8,
+              backgroundColor: '#DDDDDD',
+              borderRadius:10
             }}>
 
               <Text
@@ -175,15 +178,15 @@ class BoletimFrequence extends React.Component {
                   fontSize: 13,
                   color: '#1A2541',
                   fontWeight: 'bold',
-                  width: '40%'
+                  width: '40%',
                 }}>
                 DISCIPLINA
               </Text>
-              <Text style={{ fontSize: 12, color: '#1A2541' }}>N1</Text>
-              <Text style={{ fontSize: 12, color: '#1A2541' }}>MAIC</Text>
-              <Text style={{ fontSize: 12, color: '#1A2541' }}>N2</Text>
-              <Text style={{ fontSize: 12, color: '#1A2541' }}>MB</Text>
-              <Text style={{ fontSize: 12, color: '#1A2541' }}>F</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', color: '#1A2541' }}>N1</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', color: '#1A2541' }}>MAIC</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', color: '#1A2541' }}>N2</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', color: '#1A2541' }}>MB</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', color: '#1A2541' }}>F</Text>
             </View>
 
             <FlatList
@@ -202,7 +205,7 @@ class BoletimFrequence extends React.Component {
                   }}>
 
                   <View style={{
-                    width: '80%',
+                    width: '100%',
                     flexDirection: 'row',
                     justifyContent: 'space-between'
                   }}>
@@ -216,11 +219,11 @@ class BoletimFrequence extends React.Component {
                       }}>
                       {itemData.item.NM_DISCIPLINA}
                     </Text>
-                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['N1_'+this.state.bimestre+'B']}</Text>
-                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['MAIC_'+this.state.bimestre+'B']}</Text>
-                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['N2_'+this.state.bimestre+'B']}</Text>
-                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['MB_'+this.state.bimestre+'B']}</Text>
-                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['FT_'+this.state.bimestre+'B']}</Text>
+                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['N1_'+this.state.bimestre+'B'] == null ? '-' : itemData.item['N1_'+this.state.bimestre+'B']}</Text>
+                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['MAIC_'+this.state.bimestre+'B'] == null ? '-' : itemData.item['MAIC_'+this.state.bimestre+'B']}</Text>
+                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['N2_'+this.state.bimestre+'B'] == null ? '-' : itemData.item['N2_'+this.state.bimestre+'B']}</Text>
+                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['MB_'+this.state.bimestre+'B'] == null ? '-' : itemData.item['MB_'+this.state.bimestre+'B']}</Text>
+                    <Text style={{ fontSize: 12, color: '#1A2541' }}>{itemData.item['FT_'+this.state.bimestre+'B'] == null ? '-' : itemData.item['FT_'+this.state.bimestre+'B']}</Text>
                   </View>
                 </View>
 
@@ -235,6 +238,13 @@ class BoletimFrequence extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  text: {
+    paddingTop:2,
+    paddingBottom:2
+  }
+})
 
 const mapStateToProps = (state) => ({
   auth: state.auth,

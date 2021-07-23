@@ -70,12 +70,15 @@ class BoletosComponent extends React.Component {
       });
   };
 
-  verificaSePago(FLG_VENCIDO, VALOR_RECEBIDO){
+  verificaSePago(FLG_VENCIDO, VALOR_RECEBIDO, CODIGO_BARRA){
 
     if(VALOR_RECEBIDO == 0){
         if(FLG_VENCIDO == "S"){
             return <Text>EM ATRASO</Text>;
         }else{
+            if(CODIGO_BARRA == null){
+              return <Text></Text>;
+            }
             return <Text>EM ABERTO</Text>;
         }
     }
@@ -112,7 +115,7 @@ class BoletosComponent extends React.Component {
             </Text>
           </View>
           <View>
-          <View style={{paddingHorizontal: 20, marginTop: 10}}>
+          <View style={{paddingHorizontal: 10, marginTop: 10}}>
             <HeaderSelectUser />
           </View>
 
@@ -143,7 +146,7 @@ class BoletosComponent extends React.Component {
 
             </View>
 
-            <View style={{ marginTop: 20, paddingHorizontal: 40 }}>
+            <View style={{ marginTop: 20, paddingHorizontal: 20 }}>
 
               {this.state.mensalidades.length == 0 && <Text style={{ textAlign: 'center', }}> Não há dados</Text>}
 
@@ -163,7 +166,7 @@ class BoletosComponent extends React.Component {
                       alignItems: 'center',
                       marginBottom: 10,
                     }}>
-                    <View style={{ width: '15%' }}>
+                    <View style={{ width: '5%' }}>
                       <Image
                         source={require('../../assets/images/balance.png')}
                         resizeMode="stretch"
@@ -180,7 +183,7 @@ class BoletosComponent extends React.Component {
                         MENSALIDADE
                       </Text>
                       <Text style={{ fontSize: 12, color: '#1A2541' }}>VALOR: R${itemData.item.VALOR_BOLETO}</Text>
-                      <Text style={{ fontSize: 10, color: '#000', fontWeight: 'bold', marginTop: 5 }}>{itemData.item.CODIGO_BARRA == null ? 'Boleto não Gerado' : itemData.item.CODIGO_BARRA}</Text>       
+                      <Text style={{ fontSize: 10, color: '#000', fontWeight: 'bold', marginTop: 5 }}>{itemData.item.CODIGO_BARRA == null ? 'Boleto não Disponível' : itemData.item.CODIGO_BARRA}</Text>       
                     </View>
 
                     <View >
@@ -192,7 +195,7 @@ class BoletosComponent extends React.Component {
                         }}>
                         {itemData.item.DT_VENCIMENTO}
                       </Text>
-                      <Text style={{ fontSize: 13, color: '#1A2541' }}>{this.verificaSePago(itemData.item.FLG_VENCIDO, itemData.item.VALOR_RECEBIDO)}</Text>
+                      <Text style={{ fontSize: 13, color: '#1A2541' }}>{this.verificaSePago(itemData.item.FLG_VENCIDO, itemData.item.VALOR_RECEBIDO, itemData.item.CODIGO_BARRA)}</Text>
                     </View>
 
 

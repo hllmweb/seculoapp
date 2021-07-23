@@ -56,7 +56,13 @@ class ContentsHours extends React.Component {
       .then((res) => {
 
         var today = new Date();
-        var date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+        //var date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+        var date = today.toLocaleDateString("en-GB", { // you can use undefined as first argument
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        });
+
 
         this.setState({
           itensData: res.data,
@@ -103,7 +109,7 @@ class ContentsHours extends React.Component {
 
           </View>
 
-          <View style={{ paddingHorizontal: 40 }}>
+          <View style={{ paddingHorizontal: 20 }}>
 
             <View
               style={{
@@ -113,7 +119,7 @@ class ContentsHours extends React.Component {
                 marginTop: 15,
                 borderWidth: 1,
                 borderColor: '#BBBCBF',
-                borderRadius: 20,
+                borderRadius: 25,
                 paddingHorizontal: 15,
                 paddingVertical: 10,
                 alignItems: 'center',
@@ -124,6 +130,7 @@ class ContentsHours extends React.Component {
               </Text>
 
             </View>
+
 
             {this.state.loading && <ActivityIndicator size="large" color="#4674B7" />}
 
@@ -151,7 +158,8 @@ class ContentsHours extends React.Component {
                         {itemData.item.NOME}
                       </Text>
                       <Text style={{ color: '#383838' }}>Horário: {itemData.item.HORAINICIAL} - {itemData.item.HORAFINAL}</Text>
-                      {/* <Text style={{ color: '#383838' }}>Dia: { itemData.item.DIASEMANA}</Text> */}
+                      <Text>{itemData.item.CONTEUDOEFETIVO == null ? '-' : itemData.item.CONTEUDOEFETIVO}</Text>
+                      <Text style={{ color: '#383838', fontSize:12, fontWeight:'bold'}}>Dia: {itemData.item.DS_DIASEMANA}</Text>
                     </View>
                     {/* <View>
                   <Text style={{textAlign: 'right', color: '#383838'}}>

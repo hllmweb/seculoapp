@@ -119,7 +119,7 @@ class CalendarPage extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+      <ScrollView style={{ flex: 1, backgroundColor: '#F1F1F2' }}>
         <View >
           <Header navigation={this.props.navigation} />
           <HeaderAuthenticated />
@@ -138,7 +138,7 @@ class CalendarPage extends React.Component {
               CALENDÁRIO
             </Text>
           </View>
-          <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
+          <View style={{paddingHorizontal: 20, paddingBottom: 20}}>
 
           <HeaderSelectUser />
 
@@ -146,6 +146,7 @@ class CalendarPage extends React.Component {
               monthFormat={'MMMM yyyy'}
               onDayPress={(day) => { this.filterDate(day.dateString) }}
               markedDates={this.state.eventsDates}
+              style={{ fontWeight:'bold', marginTop:15, marginBottom:15, borderRadius:20}}
             />
 
             <FlatList 
@@ -177,7 +178,7 @@ class CalendarPage extends React.Component {
                     style={{
                       flex: 0.7,
                     }}>
-                    <Text style={{ color: '#4674b7', fontWeight: 'bold' }}>
+                    <Text style={{ color: '#111111', fontSize:12, fontWeight: 'bold' }}>
                       {eventSelect.item.DC_CALENDARIO}
                     </Text>
                   </View>
