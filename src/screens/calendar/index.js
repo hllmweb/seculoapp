@@ -117,6 +117,10 @@ class CalendarPage extends React.Component {
     });
   }
 
+  pagina = () =>{
+    alert("Carrega página");
+  }
+
   render() {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: '#F1F1F2' }}>
@@ -178,7 +182,7 @@ class CalendarPage extends React.Component {
                     style={{
                       flex: 0.7,
                     }}>
-                    <Text style={{ color: '#111111', fontSize:12, fontWeight: 'bold' }}>
+                    <Text style={{ color: '#111111', fontSize:12, fontWeight: 'bold' }} onPress={() => this.pagina()}>
                       {eventSelect.item.DC_CALENDARIO}
                     </Text>
                   </View>
