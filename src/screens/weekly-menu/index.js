@@ -130,7 +130,7 @@ class WeeklyMenu extends React.Component {
         });
 
 
-        console.log("CARDAPIO: "+JSON.stringify(this.state))
+        //console.log("CARDAPIO: "+JSON.stringify(this.state))
 
         this.setState({...this.state}, () => {
           this.state;
@@ -163,8 +163,8 @@ class WeeklyMenu extends React.Component {
           </View>
           <View
             style={{
-              paddingHorizontal: 28,
-              paddingVertical: 20,
+              paddingHorizontal: 20,
+              paddingVertical: 20
             }}>
             <Tab
               data={this.state.weekly[this.state.tabActive]}

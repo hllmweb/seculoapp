@@ -210,6 +210,7 @@ class Dashboard extends Component {
                 ) {
                   return (
                     <TouchableOpacity
+                      key={item.id}
                       style={[styles.item]}
                       onPress={() =>
                         this.props.navigation.navigate(item.navigation)
