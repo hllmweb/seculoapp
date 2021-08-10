@@ -8,6 +8,7 @@ import api from '../../config/api';
 import { Calendar, LocaleConfig} from 'react-native-calendars';
 import HeaderSelectUser from '../../components/ui/header-select-user';
 
+
 LocaleConfig.locales['pt'] = {
   monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
   monthNamesShort: ['Jan.','Fev.','Mar','Abr','Mai','Jun','Jul.','Ago.','Set.','Out.','Nov.','Dec.'],
@@ -16,6 +17,7 @@ LocaleConfig.locales['pt'] = {
   today: 'hoje'
 };
 LocaleConfig.defaultLocale = 'pt';
+
 
 class CalendarPage extends React.Component {
   state = {
@@ -117,12 +119,18 @@ class CalendarPage extends React.Component {
     });
   }
 
-  pagina = () =>{
-    alert("Carrega página");
+  goToDetails = () =>{
+    //DetailsCaledar />props.navigation.navigate('DetailsCaledar')
+    //alert(texto);
+    this.props.navigation.navigate('DetailsCaledar', {
+      'params': 'Conteúdo da prova'
+    });
   }
-
+  
   render() {
+ 
     return (
+
       <ScrollView style={{ flex: 1, backgroundColor: '#F1F1F2' }}>
         <View >
           <Header navigation={this.props.navigation} />
@@ -150,7 +158,7 @@ class CalendarPage extends React.Component {
               monthFormat={'MMMM yyyy'}
               onDayPress={(day) => { this.filterDate(day.dateString) }}
               markedDates={this.state.eventsDates}
-              style={{ fontWeight:'bold', marginTop:15, marginBottom:15, borderRadius:20}}
+              style={{ fontWeight:'bold', marginTop:15, marginBottom:15, paddingVertical:10, borderRadius:10, borderColor: '#E8E8E8', borderWidth:1}}
             />
 
             <FlatList 
@@ -162,9 +170,16 @@ class CalendarPage extends React.Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginBottom: 15,
-                    marginTop: 15,
+                    marginBottom: 10,
+                    marginTop: 10,
+                    padding:10,
+                    borderWidth: 1,
+                    borderColor: '#E8E8E8',
+                    backgroundColor:'#FFFFFF',
+                    borderRadius:10
                   }}>
+                  
+
                   <View
                     style={{
                       flex: 0.3,
@@ -178,14 +193,21 @@ class CalendarPage extends React.Component {
                       {eventSelect.item.DATA}
                     </Text>
                   </View>
+
+
                   <View
                     style={{
-                      flex: 0.7,
+                      flex: 0.7
                     }}>
-                    <Text style={{ color: '#111111', fontSize:12, fontWeight: 'bold' }} onPress={() => this.pagina()}>
+                    <Text style={{ color: '#111111', fontSize:12, fontWeight: 'bold' }} 
+                          onPress={() => {
+                            this.props.navigation.navigate('DetailsCaledar', {conteudo: eventSelect.item.INFO_PROVA})
+                            }}>
                       {eventSelect.item.DC_CALENDARIO}
                     </Text>
                   </View>
+
+
                 </View>
 
               }

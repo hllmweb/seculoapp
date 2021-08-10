@@ -33,6 +33,7 @@ import WeeklyMenu from '../screens/weekly-menu';
 // Calendar
 import CalendarPage from '../screens/calendar';
 import SingleMonth from '../screens/calendar/single-month';
+import DetailsCaledar from '../screens/calendar/components/calendar/detailsCaledar';
 
 // Support - Chat - Comunication
 import Support from '../screens/support';
@@ -85,6 +86,9 @@ class Navigation extends React.Component {
         <Stack.Screen name="TransferComplete" component={TransferComplete} />
         <Stack.Screen name="WeeklyMenu" component={WeeklyMenu} />
         <Stack.Screen name="CalendarPage" component={CalendarPage} />
+        
+        <Stack.Screen name="DetailsCaledar" component={DetailsCaledar} />
+
         <Stack.Screen name="SingleMonth" component={SingleMonth} />
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="Chat" component={Chat} />

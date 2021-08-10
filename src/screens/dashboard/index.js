@@ -15,6 +15,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from '../../components/ui/header';
 import HeaderAuthenticated from '../../components/ui/header-authenticated';
 import HeaderSelectUser from '../../components/ui/header-select-user';
+/*import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/buttom-tabs';*/
+
 import messaging from '@react-native-firebase/messaging';
 
 class Dashboard extends Component {
@@ -259,6 +262,8 @@ class Dashboard extends Component {
                 resizeMode="contain"
               />
             </View>
+
+
             <View
               style={{paddingVertical: Platform.OS === 'android' ? 15 : 25}}>
               <TouchableOpacity
@@ -272,6 +277,9 @@ class Dashboard extends Component {
                 </Text>
               </TouchableOpacity>
             </View>
+
+
+
           </View>
         </View>
       </ScrollView>
